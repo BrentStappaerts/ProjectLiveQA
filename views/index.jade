@@ -1,5 +1,22 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	#login
+		form( method="post")#login-form
+			h1 Hello!
+			p.subheading Welkom bij Live Q&A, log nu in!
+			label Naam:
+			input(type="text", name="user", id='user-tf' placeholder='Joske').formnaam
+			br 
+			label Wachtwoord:
+			input(type="password", name="pass", id='pass-tf' placeholder='******').formwachtwoord
+			br
+			button(type="submit")#btn-login.btn.btn-primary
+				| Sign in
+
+		
+
+			div.btm-links
+				a(href='/registreer')#create-account Maak een acount
+			
+			
