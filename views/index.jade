@@ -5,18 +5,22 @@ block content
 		form( method="post")#login-form
 			h1 Hello!
 			p.subheading Welkom bij Live Q&A, log nu in!
+			
 			label Naam:
 			input(type="text", name="user", id='user-tf' placeholder='Joske').formnaam
 			br 
 			label Wachtwoord:
 			input(type="password", name="pass", id='pass-tf' placeholder='******').formwachtwoord
 			br
-			button(type="submit")#btn-login.btn.btn-primary
-				| Sign in
-
-		
-
+			button(action='/login', type="submit")#btn-login.btn.btn-primary
+				| Sign in	
+			
 			div.btm-links
-				a(href='users/signup')#create-account Maak een acount
+				a(href='/signup')#create-account Maak een acount
 			
 			
+
+					#message
+					if message
+						h1.text-center.error-message #{message}
+
