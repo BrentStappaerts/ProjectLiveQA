@@ -2,20 +2,20 @@ extends layout
 
 block content
 	#login
-		form( action='/signup',method="post")#login-form
+		form(action='/signup',method="post")#login-form
 			h1 SignUp
 			p.subheading Dit is helemaal GRATIS!
 			label Naam:
-			input(type="text", name="user", id='user-tf' placeholder='Joske').formnaam
+			input(type="text", name="username", id='user-tf' placeholder='Joske',required).formnaam
 			br 
 			label Email:
-			input(type="text", name="email", id='user-tf' placeholder='email@example.com').formemail
+			input(type="email", name="email", id='user-tf' placeholder='email@example.com',required).formemail
 			br 
 			label Wachtwoord:
-			input(type="password", name="pass", id='pass-tf' placeholder='******').formwachtwoord
+			input(type="password", name="password", id='pass-tf' placeholder='******',required).formwachtwoord
 			br
 			button(type="submit")#btn-login.btn.btn-primary
 				| Sign up
-					#message
-						if message
-							h1.text-center.error-message #{message}
+	#message
+		if message
+			h1.text-center.error-message #{message}

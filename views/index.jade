@@ -2,17 +2,17 @@ extends layout
 
 block content
 	#login
-		form( method="post")#login-form
+		form(action='/login', method="post")#login-form
 			h1 Hello!
 			p.subheading Welkom bij Live Q&A, log nu in!
 			
 			label Naam:
-			input(type="text", name="user", id='user-tf' placeholder='Joske').formnaam
+			input(type="text", name="username", id='user-tf' placeholder='Joske',required).formnaam
 			br 
 			label Wachtwoord:
-			input(type="password", name="pass", id='pass-tf' placeholder='******').formwachtwoord
+			input(type="password", name="password", id='pass-tf' placeholder='******',required).formwachtwoord
 			br
-			button(action='/login', type="submit")#btn-login.btn.btn-primary
+			button(type="submit")#btn-login.btn.btn-primary
 				| Sign in	
 			
 			div.btm-links
