@@ -1,23 +1,41 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #ffbb3f;
+
 }
 
 a {
   color: #00B7FF;
 }
 
+h1{
+	color: blue;
+}
+
+h5{
+	color: black;
+}
 #login{
-	background-color: white;
-	width: 300px;
-	height: 220px;
+	background-color: #d9e5e8;
+	width: 350px;
+	height: 300px;
 	padding: 20px;
 	margin: auto;
+	border-radius: 10px;
+	
+}
+
+#topics{
+	margin-top: 20px;
+	background-color: #d9e5e8;
+}
+
+.formtopic{
+	margin: 20px;
 }
 
 .formnaam{
-	margin-left: 50px;
+	margin-left: 52px;
 	margin-bottom: 10px;
 }
 .formwachtwoord{
@@ -28,3 +46,35 @@ a {
 	margin-left: 54px;
 	margin-bottom: 10px;
 }
+
+#overzicht{
+	background-color: red;
+}
+
+#create-account {
+	color: blue;
+	text-decoration: none;
+}
+
+#btn-annuleren{
+	margin-left: 10px;
+}
+#user{
+		background-color: #d9e5e8;
+		height: 50px;
+		width: 200px;
+		padding: 10px;
+		margin-top: -50px;
+		float: right;
+}
+
+.login-title {
+	font-weight: bold;
+}
+
+
+
+
+
+
+

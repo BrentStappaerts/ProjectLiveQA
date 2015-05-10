@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          h1.text-center Q&amp;A
+          | &#x9;&#x9;&#x9;
+      .row
+        .col-md-4.col-sm-6.col-xs-12.col-md-offset-4.col-sm-offset-3.col-xs-offset-0
+          ul#products
+          | &#x9;&#x9;&#x9;
+      .row
+        .col-md-4.col-md-offset-4
+          form.form-inline(action='')
+            input#message.form-control(type='text' placeholder="Topic")
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+            input#btn.btn.btn-primary(type='button', value='Toevoegen')
+
+    | &#x9;&#x9;
+    script(src='https://cdn.socket.io/socket.io-1.2.0.js')
+    | &#x9;&#x9;
+    script(src='http://code.jquery.com/jquery-1.11.1.js')
+    | &#x9;&#x9;
+    script.
+      $(document).ready(function() {
+      var socket = io();
+      $('#btn').on('click', function() {
+      socket.emit('message', $("#message").val());
+      });
+      socket.on('startMessages', function(messages) {
+      $('#products').val();
+      var length = messages.length;
+      for(var i = 0; i < messages.length; i++) {
+      $('#products').append('<li>'+messages[i].message+'</li>');
+      }
+      });
+      socket.on('update', function(update) {
+      console.log('update', update);
+      $('#products').append('<li>'+update.message+'</li>');
+      });
+      });
+
+
+    div#user
+      h5.text-center.login-title #{user.username}   
+      a(href='/signout', class='text-center new-account') Sign Out

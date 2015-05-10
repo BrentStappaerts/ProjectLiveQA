@@ -2,25 +2,24 @@ extends layout
 
 block content
 	#login
-		form(action='/login', method="post")#login-form
-			h1 Hello!
-			p.subheading Welkom bij Live Q&A, log nu in!
-			
+		form(action='/signup',method="post")#login-form
+			h1 SignUp
+			p.subheading Dit is helemaal GRATIS!
 			label Naam:
 			input(type="text", name="username", id='user-tf' placeholder='Joske',required).formnaam
+			br 
+			label Email:
+			input(type="email", name="email", id='user-tf' placeholder='email@example.com',required).formemail
 			br 
 			label Wachtwoord:
 			input(type="password", name="password", id='pass-tf' placeholder='******',required).formwachtwoord
 			br
 			button(type="submit")#btn-login.btn.btn-primary
-				| Sign in	
-			
-			div.btm-links
-				a(href='/signup')#create-account Maak een acount
-			
+				| Sign up
+
 			
 
-					#message
-					if message
-						h1.text-center.error-message #{message}
 
+	#message
+		if message
+			h1.text-center.error-message #{message}
