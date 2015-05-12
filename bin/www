@@ -21,6 +21,90 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+
+/*
+// MONGODB
+var mongoose = require('mongoose');
+
+    // connection
+mongoose.connect('mongodb://localhost/hellothere', function(err){
+    if(err){
+        console.log(err);
+    }else{
+        console.log("Connected to mongodb!");
+    }
+});
+*/
+var dbConfig = require('../db');
+var mongoose = require('mongoose');
+
+
+   // schema
+var topicSchema = mongoose.Schema({
+    
+    topic: String,
+    questionID: String
+});
+
+var replySchema = mongoose.Schema({
+    name: String,
+    reply: String,
+    questionid: String
+});
+
+    // model
+var topic = mongoose.model('Topic', topicSchema);
+var Reply = mongoose.model('Reply', replySchema);
+
+// SOCKETS
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function(socket){
+
+        // query messages, haal alle topics uit databank, behalve laatste toegevoegd.
+    topic.find({}, function(err, docs){
+        if(err) throw err;
+        socket.emit('load old topics', docs);
+    });
+    
+    //recieving new message from client
+  socket.on('send message', function(data){
+        console.log("server received a topic");
+        
+        // inserting in mongodb
+        var newtopic = new topic({topic: data});
+        newtopic.save(function(err){
+        if(err) throw err;
+        
+        // send topic to ALL clients
+    io.sockets.emit('new message', data);
+    console.log("nieuw topic toegevoegd: " + data);
+     });
+    });
+
+
+
+    /*
+    //recieving reply from client
+    socket.on('send reply', function(data){
+        console.log("server received a reply");
+        var questionID = data.questionid.substring(9,20);
+        
+        // inserting in mongodb
+        var newReply = new Reply({name: data.name, reply: data.reply, questionid: questionID});
+        newReply.save(function(err){
+        if(err) throw err;
+        
+        // send reply to ALL clients
+    io.sockets.emit('new reply', data);
+     });
+    });
+*/
+
+
+});
+
+
 /**
  * Listen on provided port, on all network interfaces.
  */

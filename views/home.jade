@@ -6,17 +6,17 @@ block content
         .col-md-8.col-md-offset-2
           h1.text-center Q&amp;A
           | &#x9;&#x9;&#x9;
-      .row
-        .col-md-4.col-sm-6.col-xs-12.col-md-offset-4.col-sm-offset-3.col-xs-offset-0
-          ul#products
-          | &#x9;&#x9;&#x9;
+      
       .row
         .col-md-4.col-md-offset-4
           form.form-inline(action='')
             input#message.form-control(type='text' placeholder="Topic")
             | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
             input#btn.btn.btn-primary(type='button', value='Toevoegen')
-
+        .row
+        .col-md-4.col-sm-6.col-xs-12.col-md-offset-4.col-sm-offset-3.col-xs-offset-0
+          ul#products
+          | &#x9;&#x9;&#x9;
     | &#x9;&#x9;
     script(src='https://cdn.socket.io/socket.io-1.2.0.js')
     | &#x9;&#x9;
@@ -25,19 +25,24 @@ block content
     script.
       $(document).ready(function() {
       var socket = io();
+
       $('#btn').on('click', function() {
-      socket.emit('message', $("#message").val());
+       
+        //Topic titel doorsturen naar databank.
+      socket.emit('send message', $("#message").val());
+      return false; 
       });
-      socket.on('startMessages', function(messages) {
+      socket.on('load old topics', function(docs) {
       $('#products').val();
-      var length = messages.length;
-      for(var i = 0; i < messages.length; i++) {
-      $('#products').append('<li>'+messages[i].message+'</li>');
+      var length = docs.length;
+      for(var i = 0; i < docs.length; i++) {
+      $('#products').prepend('<li><a>'+docs[i].topic+'</a></li>');
       }
       });
-      socket.on('update', function(update) {
+      socket.on('new message', function(update) {
       console.log('update', update);
-      $('#products').append('<li>'+update.message+'</li>');
+
+      $('#products').prepend('<li><a>'+update+'</a></li>');
       });
       });
 
