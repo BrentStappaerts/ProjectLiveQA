@@ -1,10 +1,12 @@
 extends layout
 
 block content
+   
     .container
+      br
       .row
         .col-md-8.col-md-offset-2
-          h1.text-center Q&amp;A
+          h1.text-center 
           | &#x9;&#x9;&#x9;
       
       .row
@@ -36,16 +38,18 @@ block content
       $('#products').val();
       var length = docs.length;
       for(var i = 0; i < docs.length; i++) {
-      $('#products').prepend('<li><a href="'+docs[i]._id+'">'+docs[i].topic+'</a></li>');
+      $('#products').prepend('</br><li><a href="'+docs[i]._id+'">'+docs[i].topic+'</a></li></br>');
       }
       });
       socket.on('new message', function(update) {
       console.log('update', update);
 
-      $('#products').prepend('<li><a>'+update+'</a></li>');
+      $('#products').prepend('</br><li><a>'+update+'</a></li></br>');
       });
       });
 
+    div#banner
+      h1 Live Q&A
 
     div#user
       h5.text-center.login-title #{user.username}   

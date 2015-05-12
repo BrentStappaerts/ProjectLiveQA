@@ -21,8 +21,21 @@ h5{
 	height: 300px;
 	padding: 20px;
 	margin: auto;
+	margin-top: 60px;
 	border-radius: 10px;
 	
+}
+
+#products li a{
+	background-color: #d9e5e8;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+#products li a:hover{
+	text-decoration: none;
+	background-color: #6b87af;
+	color: white;
 }
 
 #topics{
@@ -47,6 +60,12 @@ h5{
 	margin-bottom: 10px;
 }
 
+#wrapper{
+	background-color: red;
+}
+
+
+
 #overzicht{
 	background-color: red;
 }
@@ -61,20 +80,36 @@ h5{
 }
 #user{
 		background-color: #d9e5e8;
-		height: 50px;
+		height: 60px;
 		width: 200px;
-		padding: 10px;
-		margin-top: -50px;
-		float: right;
+		position: absolute;
+		right: 10px;
+		top:10px;
 }
 
 .login-title {
 	font-weight: bold;
 }
 
+.new-account{
+	margin-left: 70px;
+}
 
+#banner{
+		background-color: #6b87af;
+		height: 60px;
+		width: 1300px;
+		position: absolute;
+		left: 10px;
+		top:10px;
+}
 
+#banner h1{
+	color: white;
+	text-align: center;
+}
 
-
-
+.container{
+	margin-top: 80px;
+}
 
