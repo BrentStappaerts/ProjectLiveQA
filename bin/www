@@ -43,7 +43,7 @@ var mongoose = require('mongoose');
 var topicSchema = mongoose.Schema({
     
     topic: String,
-    questionID: String
+ 
 });
 
 var replySchema = mongoose.Schema({
