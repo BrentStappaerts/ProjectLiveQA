@@ -23,7 +23,23 @@ h5{
 	margin: auto;
 	margin-top: 60px;
 	border-radius: 10px;
+	-webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 6s; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 6s;
 	
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes example {
+    from {background-color: #ffffff;}
+    to {background-color: #d9e5e8;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {background-color: #ffffff;}
+    to {background-color: #d9e5e8;}
 }
 
 
