@@ -38,13 +38,13 @@ block content
       $('#products').val();
       var length = docs.length;
       for(var i = 0; i < docs.length; i++) {
-      $('#products').prepend('</br><li><a href="'+docs[i]._id+'">'+docs[i].topic+'</a></li></br>');
+      $('#products').prepend('</br><li><a href=/comment/'+docs[i]._id+'>'+docs[i].topic+'</a></li></br>');
       }
       });
       socket.on('new message', function(update) {
       console.log('update', update);
 
-      $('#products').prepend('</br><li><a>'+update+'</a></li></br>');
+      $('#products').prepend('</br><li class="new-item"><a>'+update+'</a></li></br>');
       });
       });
 

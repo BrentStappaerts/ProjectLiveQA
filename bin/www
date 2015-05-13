@@ -83,10 +83,12 @@ io.sockets.on('connection', function(socket){
     });
 
 
+/*
+    //socket voor de comments
 
-    /*
     //recieving reply from client
     socket.on('send reply', function(data){
+
         console.log("server received a reply");
         var questionID = data.questionid.substring(9,20);
         
